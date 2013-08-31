@@ -47,12 +47,6 @@ compile-coffee:
 publish: env-pre
 	@echo publishing ...
 	$(publish_$(PUBTYPE))
-	# @if [ `$(PUBTYPE)` -eq `git` ]; then \
-	# 	echo 13123123 ;\
-	# 	publish_git ;\
-	# elif [ $(PUBTYPE) -eq bae ]; then \
-	# 	publish_bae ;\
-	# fi
 	@echo "\033[32m publish successful! \033[39;49;0m\n"
 
 publish_bae:
@@ -61,9 +55,6 @@ publish_bae:
 	@cd $(-PUB_TEMP);\
 	make compile-coffee ;\
 	$(doPublish) ;\
-	# git add . ;\
-	# git commit -a -m $(MESSAGE) ;\
-	# git push origin master ;\
 	rm -rf $(-PUB_bae_TEMP)
 
 publish_git:
@@ -74,7 +65,7 @@ publish_git:
 define doPublish
 pwd
 git add . ;\
-git commit -a -m $(MESSAGE) ;\
+git commit -a -m "$(MESSAGE)" ;\
 git push origin master
 endef
 
