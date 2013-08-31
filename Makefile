@@ -74,7 +74,7 @@ publish_git:
 define doPublish
 pwd
 git add . ;\
-git commit -a -m $(MESSAGE)
+git commit -a -m $(MESSAGE) ;\
 git push origin master
 endef
 
