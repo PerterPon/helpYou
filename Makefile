@@ -57,13 +57,15 @@ publish_bae:
 	$(doPublish) ;\
 	rm -rf $(-PUB_bae_TEMP)
 
+testtest:
+
+
 publish_git:
 	@cp -rf ./* $(-PUB_git_TEMP)
 	@cd $(-PUB_git_TEMP) ;\
 	$(doPublish)
 
 define doPublish
-pwd
 git add . ;\
 git commit -a -m "$(MESSAGE)" ;\
 git push origin master
