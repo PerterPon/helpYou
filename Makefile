@@ -5,7 +5,7 @@ JS_FILE      := $(shell find ./ -type f -name *.coffee)
 -BIN_COFFEE  := ./node_modules/coffee-script/bin/coffee
 -MOCHA       := ./node_modules/.bin/mocha
 
--PUB_bae_TEMP = ../../publish_bae_temp
+-PUB_bae_TEMP = ../../publish_bae
 
 -PUB_git_TEMP = ../../helpYou
 
@@ -22,7 +22,6 @@ dev: npm-install test-pre env-pre
 test-pre: test
 
 env-pre:
-	@rm -rf $(-PUB_TEMP)
 
 test:
 	@echo "\033[31m begin unit test!\033[39;49;0m\n"
@@ -44,18 +43,11 @@ compile-coffee:
 		rm -rf $$f;\
 	done
 
-publish: env-pre
-	@echo publishing ...
-	$(publish_$(PUBTYPE))
-	@echo "\033[32m publish successful! \033[39;49;0m\n"
-
-publish_bae:
-	@mkdir $(-PUB_TEMP)
-	@cp -rf ../* $(-PUB_TEMP)
-	@cd $(-PUB_TEMP);\
+publish_bae: env-pre
+	@cp -a . $(-PUB_bae_TEMP)/$(VERSION)
+	@cd $(-PUB_bae_TEMP)/$(VERSION) ;\
 	make compile-coffee ;\
 	$(doPublish) ;\
-	rm -rf $(-PUB_bae_TEMP)
 
 publish_git:
 	@cp -rf ./* $(-PUB_git_TEMP)
@@ -63,6 +55,7 @@ publish_git:
 	$(doPublish)
 
 define doPublish
+pwd ;\
 git add . ;\
 git commit -a -m "$(MESSAGE)" ;\
 git push origin master

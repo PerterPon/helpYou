@@ -1,8 +1,11 @@
 {
-    "main"        : "app.js",
+    "main"           : "app.js",
     "devDependencies": {
-      "mocha"     : "*",
-      "expect.js" : "*"
+      "mocha"          : "*",
+      "expect.js"      : "*",
+      "coffee-script"  : "*",
+      "connect"        : "*",
+      "pm"             : "*"
     }
 }
 
