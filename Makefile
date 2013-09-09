@@ -22,6 +22,14 @@ dev: npm-install test-pre env-pre
 test-pre: test
 
 env-pre:
+	@if [ ! -x $(-PUB_bae_TEMP) ]; then \
+		mkdir $(-PUB_bae_TEMP) ;\
+		mkdir $(-PUB_bae_TEMP)/$(VERSION) ;\
+	fi
+	@if [ ! -x $(-PUB_git_TEMP) ]; then \
+		mkdir $(-PUB_git_TEMP) ;\
+		mkdir $(-PUB_git_TEMP)/$(VERSION) ;\
+	fi
 
 test:
 	@echo "\033[31m begin unit test!\033[39;49;0m\n"
