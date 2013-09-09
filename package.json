@@ -3,9 +3,10 @@
     "devDependencies": {
       "mocha"          : "*",
       "expect.js"      : "*",
-      "coffee-script"  : "*",
       "connect"        : "*",
-      "pm"             : "*"
+      "pm"             : "*",
+      "argparse"       : "*",
+      "clone"          : "*"
     }
 }
 
